@@ -74,7 +74,8 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+ }
 
 abbr[title],
 abbr[data-original-title] {
@@ -106,8 +107,9 @@ dt {
   font-weight: 700; }
 
 dd {
-  margin-bottom: .5rem;
-  margin-left: 0; }
+  margin-bottom:0rem;
+  margin-left: 3.5rem;
+  line-height: -0.25; }
 
 blockquote {
   margin: 0 0 1rem; }
@@ -2183,7 +2185,7 @@ fieldset:disabled a.btn {
     box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5); }
   .btn-warning.disabled, .btn-warning:disabled {
     color: #212529;
-    background-color: #ffc107;
+    background-color: hsl(45, 100%, 51%);
     border-color: #ffc107; }
   .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active,
   .show > .btn-warning.dropdown-toggle {
@@ -8796,23 +8798,25 @@ h1, h2, h3, h4, h5,
 
 .resume-wrap {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
+  padding: 10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px; }
   .resume-wrap .date {
-    font-weight: 900;
-    font-size: 26px;
-    color: #ffbd39; }
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffbd39;
+    letter-spacing: 2px; }
   .resume-wrap h2 {
-    font-size: 26px; }
+    font-size: 15px;
+    letter-spacing: 2px; }
   .resume-wrap .position {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     text-transform: uppercase; }
 
 .services-1 {
@@ -9064,11 +9068,11 @@ textarea.form-control {
     font-size: 24px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 2em 0;
   position: relative; }
   @media (max-width: 767.98px) {
     .ftco-section {
-      padding: 6em 0; } }
+      padding: 2em 0; } }
 
 .ftco-no-pt {
   padding-top: 0 !important; }
@@ -9681,4 +9685,5 @@ textarea.form-control {
     stroke-dashoffset: -35px; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; } }
+    stroke-dashoffset: -136px; } 
+  }
