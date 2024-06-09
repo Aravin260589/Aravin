@@ -272,14 +272,79 @@
     	<div class="container">
     		<div class="row justify-content-center pb-5">
 				<div class="col-md-10 heading-section text-center ftco-animate">
-			<h1 class="big big-2">JavaCode</h1>
-            <h2 class="mb-4">JavaCode</h2>
-            <p> A look at the Java Code
+			<h1 class="big big-2">PseudoCode</h1>
+            <h2 class="mb-4">PseudoCode?</h2>
+			<p>Here we will take a closer look on the pseudocode of the comound interest calculator.</p>
+				</div>
+				<div style="box-sizing: content-box; border: 1.5px solid #ffbd39">
+		<div class="dd">
+			<p style="line-height:5px;margin-top:15px"></p>
+			<p style="line-height:5px">&nbsp;&nbsp;import java.util.Scanner;</p>
+	<p style="line-height:5px">&nbsp;&nbsp;class Compound_Interest_Calculator</p>
+	<p style="line-height:5px">&nbsp;&nbsp;{</p>
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static void main(String[] args)</p>
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner input = new Scanner(System.in);</p>   
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter current Age: ");</p> 
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int CurrentAge = input.nextInt();</p> 
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int CompoundYears = 0;</p> 
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int WithdrawnAge = 0;</p> 
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Duration = 0;</p> 
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLost = 0;</p> 
+	<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double WithdrawnAmount = 0;</p>
+	<br> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (CurrentAge >=55)</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("You have reached Withdrawal Age");</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Please enter principal amount: ");</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Principal = input.nextDouble();</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CompoundYears = (55- CurrentAge + 1);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Rate = (5.5/100);</p> 
+<br> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Do You wish to withdraw amount before age 55?");</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char Withdraw = input.next().charAt(0);</p> 
+<br>        
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Withdraw == 'Y'|Withdraw == 'y')</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("At what age would you like to withdraw?:");</p>  
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WithdrawnAge = input.nextInt();</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter the amount to withdraw: ");</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WithdrawnAmount = input.nextDouble();</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration = (55- WithdrawnAge + 1);</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestLost = LostCalculation(Duration, WithdrawnAmount);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
+<br>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestEarned = Principal;</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int year = 1; year <= CompoundYears; year++)</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestEarned *= (1 + Rate);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+<br>       			
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Earned by Age of 55: " + Math.round((InterestEarned-Principal)*100.0)/100.0);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round((InterestEarned-InterestLost)*100.0)/100.0);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Withdrawn Amount: "+ + Math.round(WithdrawnAmount*100.0)/100.0);</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Lost by Age of 55: " + Math.round((InterestLost-WithdrawnAmount)*100.0)/100.0);</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static double LostCalculation(int Duration, double WithdrawnAmount)</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result =  WithdrawnAmount;</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Rate = (5.5/100);</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= Duration; year++)</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result *= (1 + Rate);</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;}</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;return result;</p>
+<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p style="line-height:5px">&nbsp;&nbsp;}</p>
+
+</div>
 		</div>
 		</div>
-		</div>
-		<div style="text-align:center;">
-		<img src="images/project-4.jpg" alt="Full-size image" width="50%" height ="25%">
         </div>
     </section>
 
