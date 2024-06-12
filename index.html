@@ -213,15 +213,16 @@
 									<p style="line-height:5px;margin-bottom:30px">&nbsp;&nbsp; The code will require user to input the following: </p>
 									<p style="line-height:5px;">&nbsp;&nbsp; (a) Current Age</p>
 									<p style="line-height:5px;">&nbsp;&nbsp; (b) Principal Amount</p>
-									<p style="line-height:5px;margin-top:20px;">&nbsp;&nbsp; If user intents to withdraw before the age of 55, input:</p>
-									<p style="line-height:5px;">&nbsp;&nbsp; (c) Withdraw Age</p>
-									<p style="line-height:5px;">&nbsp;&nbsp; (d) Withdraw Amount</p>
+									<p style="line-height:5px;">&nbsp;&nbsp; (c) Monthly Contribution</p>
+									<p style="line-height:5px;margin-top:30px;">&nbsp;&nbsp; If user intents to withdraw before the age of 55, input:</p>
+									<p style="line-height:5px;margin-top:30px;">&nbsp;&nbsp; (d) Withdraw Age</p>
+									<p style="line-height:5px;">&nbsp;&nbsp; (e) Withdraw Amount</p>
 									<p style="line-height:5px;margin-top:30px;">&nbsp;&nbsp; The code will return:</p>
 									<p style="line-height:5px;margin-top:30px">&nbsp;&nbsp; (i) Interest Rate (%) - fixed to 5.5% per EPF Historical record</p>
-									<p style="line-height:5px;">&nbsp;&nbsp; (ii) Compound Interest Earned by Age of 55</p>
-									<p style="line-height:5px;">&nbsp;&nbsp; (iii) Final Savings Amount by Age of 55</p>
-									<p style="line-height:5px;">&nbsp;&nbsp; (iv) Withdrawn Amount</p>
-									<p style="line-height:5px;margin-bottom:30px;">&nbsp;&nbsp; (v) Compound Interest Lost by Age of 55</p>
+									<p style="line-height:5px;">&nbsp;&nbsp; (ii) Duration of Compound Years by Age 55</p>
+									<p style="line-height:5px;">&nbsp;&nbsp; (iii) Compound Interest Earned by Age of 55</p>
+									<p style="line-height:5px;">&nbsp;&nbsp; (iv) Final Savings Amount by Age of 55</p>
+									<p style="line-height:5px;margin-bottom:30px;">&nbsp;&nbsp; (v) Interest Lost due to Withdrawal</p>
 							</div>
 						</div>
 					</div>
@@ -235,51 +236,76 @@
 									<p style="line-height:5px;margin-left: 25px;">Read Current Age</p>
 									<p style="line-height:5px;margin-left: 25px;">Set int CurrentAge per scanner input</p>
 									<p style="line-height:5px;margin-left: 25px;">Set int CompoundYears = 0</p>
-									<p style="line-height:5px;margin-left: 25px;">Set int WithdrawnAge = 0</p>
-									<p style="line-height:5px;margin-left: 25px;">Set int Duration = 0</p>
-									<p style="line-height:5px;margin-left: 25px;">Set double InterestLost = 0</p>
-									<p style="line-height:5px;margin-left: 25px;">Set double WithdrawnAmount = 0</p>
+									<p style="line-height:5px;margin-left: 25px;">Set double Rate = (5.5/100)</p>
 									<br>
-									<p style="line-height:5px;margin-left: 45px;">if CurrentAge >= 55</p>
+									<p style="line-height:5px;margin-left: 25px;">if CurrentAge >= 55</p>
 									<p style="line-height:5px;margin-left: 45px;">Print "You have reached Withdrawal Age"</p>
 									<br>
 									<p style="line-height:5px;margin-left: 25px;">else </p>
-									<p style="line-height:5px;margin-left: 25px;">Read Principal</p>
-									<p style="line-height:5px;margin-left: 25px;">Set double Principal per scanner input</p>
-									<p style="line-height:5px;margin-left: 25px;">Set double CompoundYears = (55-CurrentAge+1)</p>
-									<p style="line-height:5px;margin-left: 25px;">Set double Rate = (5.5/100)</p>
+									<p style="line-height:5px;margin-left: 45px;">Read Principal</p>
+									<p style="line-height:5px;margin-left: 45px;">Set double Principal per scanner input</p>
+									<p style="line-height:5px;margin-left: 45px;">Read Montly Contribution</p>
+									<p style="line-height:5px;margin-left: 45px;">Set MonthlyContribution per scanner input</p>
+									<p style="line-height:5px;margin-left: 45px;">Set YearlyContribution = (MonthlyContribution*12) </p>
+									<p style="line-height:5px;margin-left: 45px;">Set double CompoundYears = (55-CurrentAge+1)</p>
 									<br>
-									<p style="line-height:5px;margin-left: 25px;">Read Withdraw</p>
-									<p style="line-height:5px;margin-left: 25px;">Set char Withdraw per scanner input at index 0</p>
+									<p style="line-height:5px;margin-left: 45px;">Read Withdraw</p>
+									<p style="line-height:5px;margin-left: 45px;">Set char Withdraw per scanner input at index 0</p>
 									<br>
-									<p style="line-height:5px;margin-left: 45px;">if Withdraw = 'Y' or 'y'</p>
-									<p style="line-height:5px;margin-left: 45px;">Read WithdrawAge</p>
-									<p style="line-height:5px;margin-left: 45px;">Set int WithdrawAge per scanner input</p>
-									<p style="line-height:5px;margin-left: 45px;">Read WithdrawnAmount</p>
-									<p style="line-height:5px;margin-left: 45px;">Set double WithdrawnAmount per scanner input</p>
-									<p style="line-height:5px;margin-left: 45px;">Set Duration = (55- WithdrawnAge + 1</p>
-									<p style="line-height:5px;margin-left: 45px;">Invoke submethod LostCalculation (Duration, WithdrawnAmount) </p>	
+									<p style="line-height:5px;margin-left: 45px;">if Withdraw = 'N' or 'n'</p>
 									<br>
-									<p style="line-height:5px;margin-left: 45px;">Execute Submethod LostCalculation(Duration, WithdrawnAmount)</p>
-									<p style="line-height:5px;margin-left: 45px;">set InterestLost = WithdrawnAmount</p>
-									<p style="line-height:5px;margin-left: 45px;">Set double Rate = (5.5/100)</p>
-									<p style="line-height:5px;margin-left: 45px;">ForLoop (int year = 1; year <= Duration; year++) </p>
-									<p style="line-height:5px;margin-left: 45px;">Result *= (1 + Rate)</p>
-									<p style="line-height:5px;margin-left: 45px;">Return Result to main body</p>
-									<p style="line-height:5px;margin-left: 45px;">Set InterestLost = LostCalculation(Duration, WithdrawnAmount)</p>
+									<p style="line-height:5px;margin-left: 65px;">Set double FullInterestEarned = submethod FullCal</p>
+									<p style="line-height:5px;margin-left: 65px;">Invoke submethod FullInterestEarned</p>
 									<br>
-									<p style="line-height:5px;margin-left: 25px;">InterestEarned = Principal</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Interest Rate (%): " = (Rate*50)</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Duration of Compound Years by Age 55: " = CompoundYears</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Compound Interest Earned by Age of 55: RM" = (FullInterestEarned-Principal)</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Final Savings Amount by Age of 55: RM" = (FullInterestEarned)</p>			
+									<br>
+									<p style="line-height:5px;margin-left: 45px;">else if Withdraw = 'Y' or 'y'</p>
+									<br>
+									<p style="line-height:5px;margin-left: 65px;">Read WithdrawAge</p>
+									<p style="line-height:5px;margin-left: 65px;">Set int WithdrawAge per scanner input</p>
+									<p style="line-height:5px;margin-left: 65px;">Read WithdrawnAmount</p>
+									<p style="line-height:5px;margin-left: 65px;">Set double WithdrawnAmount per scanner input</p>	
+									<p style="line-height:5px;margin-left: 65px;">Set Duration = (55- WithdrawnAge + 1</p>
+									<br>
+									<p style="line-height:5px;margin-left: 65px;">Set double FullInterestEarned = submethod FullCal</p>
+									<p style="line-height:5px;margin-left: 65px;">Invoke submethod FullInterestEarned</p>
+									<br>
+									<p style="line-height:5px;margin-left: 65px;">Set double InterestLostPart1 = submethod LostCalculation1</p>
+									<p style="line-height:5px;margin-left: 65px;">Invoke submethod LostCalculation1</p>
+									<br>
+									<p style="line-height:5px;margin-left: 65px;">Set double InterestLostPart2 = submethod LostCalculation2</p>
+									<p style="line-height:5px;margin-left: 65px;">Invoke submethod LostCalculation2</p>
+									<br>
+									<p style="line-height:5px;margin-left: 65px;">Print "Interest Rate (%): " = (Rate*50)</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Duration of Compound Years by Age 55: " = CompoundYears</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Compound Interest Earned by Age of 55: RM" = (InterestLostPart2-Principal)</p>
+									<p style="line-height:5px;margin-left: 65px;">Print "Final Savings Amount by Age of 55: RM" = (FullInterestEarned)</p>	
+									<p style="line-height:5px;margin-left: 65px;">Print "Interest Lost due to Withdrawal: RM" = (FullInterestEarned-InterestLostPart2-WithdrawnAmount)&nbsp;&nbsp;&nbsp;&nbsp;</p>	
+									<br>
+									<p style="line-height:5px;margin-left: 25px;">Submethod FullCal</p>
+									<p style="line-height:5px;margin-left: 25px;">FullInterestEarned = Principal</p>
 									<p style="line-height:5px;margin-left: 25px;">ForLoop (int year = 1; year <= CompoundYears; year++) </p>
 									<p style="line-height:5px;margin-left: 25px;">InterestEarned *= (1 + Rate)</p>
+									<p style="line-height:5px;margin-left: 25px;">InterestEarned = InterestEarned + YearlyContribution</p>
+									<p style="line-height:5px;margin-left: 25px;">Return FullInterestEarned</p>
 									<br>
-									<p style="line-height:5px;margin-left: 25px;">Print "Interest Rate (%): " = (Rate*50)</p>
-									<p style="line-height:5px;margin-left: 25px;">Print "Duration of Compound Years by Age 55: " = CompoundYears</p>
-									<p style="line-height:5px;margin-left: 25px;">Print "Compound Interest Earned by Age of 55: RM" = (InterestEarned-Principal)</p>
-									<p style="line-height:5px;margin-left: 25px;">Print "Final Savings Amount by Age of 55: RM" = (InterestEared-InterestLost)</p>
-									<p style="line-height:5px;margin-left: 25px;">Print "Withdrawn Amount: RM" = WithdrawnAmount</p>
-									<p style="line-height:5px;margin-left: 25px;">Print "Compound Interest Lost by Age of 55: RM" = (InterestLost-WithdrawnAmount)&nbsp;&nbsp;&nbsp;&nbsp;</p>
-									<p style="line-height:5px;margin-left: 0px;">&nbsp;&nbsp;End</p>
-									<p style="line-height:5px;margin-bottom:15px"></p>
+									<p style="line-height:5px;margin-left: 25px;">Submethod LostCalculation1</p>
+									<p style="line-height:5px;margin-left: 25px;">InterestLostPart1 = Principal</p>
+									<p style="line-height:5px;margin-left: 25px;">ForLoop (int year = 1; year <= (CompoundYears-Duration); year++) </p>
+									<p style="line-height:5px;margin-left: 25px;">InterestLostPart1 *= (1 + Rate)</p>
+									<p style="line-height:5px;margin-left: 25px;">InterestLostPart1 = InterestEarned + YearlyContribution</p>
+									<p style="line-height:5px;margin-left: 25px;">Return InterestLostPart1</p>
+									<br>
+									<p style="line-height:5px;margin-left: 25px;">Submethod LostCalculation2</p>
+									<p style="line-height:5px;margin-left: 25px;">InterestLostPart2 = (InterestLostPart1-WithdrawnAmount)</p>
+									<p style="line-height:5px;margin-left: 25px;">ForLoop (int year = 1; year <= (Duration); year++) </p>
+									<p style="line-height:5px;margin-left: 25px;">InterestLostPart2 *= (1 + Rate)</p>
+									<p style="line-height:5px;margin-left: 25px;">InterestLostPart2 = InterestLostPart2 + YearlyContribution</p>
+									<p style="line-height:5px;margin-left: 25px;">Return InterestLostPart2</p>
+									<p style="line-height:5px;margin-left: 0px;margin-bottom:30px;">&nbsp;&nbsp;End</p>
 							</div>
 						</div>	
 					</div>		
@@ -303,63 +329,89 @@
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static void main(String[] args)</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;{</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner input = new Scanner(System.in);</p>   
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter current Age: ");</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter current Age: ");</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int CurrentAge = input.nextInt();</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int CompoundYears = 0;</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int WithdrawnAge = 0;</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Duration = 0;</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLost = 0;</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double WithdrawnAmount = 0;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int CompoundYears = (55- CurrentAge + 1);</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Rate = (5.5/100);</p>
 								<br> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (CurrentAge >=55)</p> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("You have reached Withdrawal Age");</p> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+								
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</p> 
+								
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Please enter principal amount: ");</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Principal = input.nextDouble();</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CompoundYears = (55- CurrentAge + 1);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Rate = (5.5/100);</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Principal = input.nextDouble();</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Please enter monthly contribution: ");</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double MonthlyContribution = input.nextDouble();</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double YearlyContribution = MonthlyContribution*12;</p>   
 								<br> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Do You wish to withdraw amount before age 55?");</p> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char Withdraw = input.next().charAt(0);</p> 
 								<br>        
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Withdraw == 'Y'|Withdraw == 'y')</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("At what age would you like to withdraw?:");</p>  
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WithdrawnAge = input.nextInt();</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter the amount to withdraw: ");</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WithdrawnAmount = input.nextDouble();</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration = (55- WithdrawnAge + 1);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestLost = LostCalculation(Duration, WithdrawnAmount);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Withdraw == 'N'|Withdraw == 'n')</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);</p>  
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Duration of Compound Years by Age 55: " +CompoundYears);</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Earned by Age of 55: " + Math.round((FullInterestEarned-Principal)*100.0)/100.0);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round((FullInterestEarned)*100.0)/100.0);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
 								<br>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestEarned = Principal;</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int year = 1; year <= CompoundYears; year++)</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestEarned *= (1 + Rate);</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (Withdraw == 'Y'|Withdraw == 'y')</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("At what age would you like to withdraw?:");</p>  
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int WithdrawnAge = input.nextInt();</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter the amount to withdraw: ");</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double WithdrawnAmount = input.nextDouble();</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Duration = (55- WithdrawnAge + 1);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart1 = LostCalculation1(Rate,Duration,CompoundYears, Principal,YearlyContribution);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart2 = LostCalculation2(Rate,Duration,WithdrawnAmount, InterestLostPart1,YearlyContribution);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLost = (FullInterestEarned-InterestLostPart2-WithdrawnAmount);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Duration of Compound Years by Age 55: " + CompoundYears);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round(InterestLostPart2-Principal)*100.0/100.0);</p>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Lost due to Withdrawal: " + Math.round(InterestLost*100.0)/100.0);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
-								<br>       			
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Earned by Age of 55: RM" + Math.round((InterestEarned-Principal)*100.0)/100.0);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: RM" + Math.round((InterestEarned-InterestLost)*100.0)/100.0);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Withdrawn Amount: RM"+ + Math.round(WithdrawnAmount*100.0)/100.0);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Lost by Age of 55: RM" + Math.round((InterestLost-WithdrawnAmount)*100.0)/100.0);&nbsp;&nbsp;&nbsp;&nbsp;</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static double LostCalculation(int Duration, double WithdrawnAmount)</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result =  WithdrawnAmount;</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Rate = (5.5/100);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= Duration; year++)</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result *= (1 + Rate);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;}</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;return result;</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-								<p style="line-height:5px">&nbsp;&nbsp;}</p>
-								<p style="line-height:5px;margin-bottom:15px"></p>
+								<br>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static double FullCal(double Rate,int CompoundYears,double Principal,double YearlyContribution)</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = Principal;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= CompoundYears; year++)</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FullInterestEarned *= (1 + Rate);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FullInterestEarned = FullInterestEarned + YearlyContribution;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return FullInterestEarned;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;}</p>
+								<br>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static double LostCalculation1(double Rate,int Duration,int CompoundYears,double Principal,double YearlyContribution)</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart1 = Principal;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= (CompoundYears - Duration); year++) </p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestLostPart1 *= (1 + Rate);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestLostPart1 = InterestLostPart1 + YearlyContribution;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return InterestLostPart1;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;}</p>
+								<br>
+								<p>&nbsp;&nbsp;public static double LostCalculation2(double Rate,int Duration,double WithdrawnAmount,double InterestLostPart1,double YearlyContribution)</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart2 = (InterestLostPart1 - WithdrawnAmount);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= (Duration); year++)  </p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestLostPart2 *= (1 + Rate);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InterestLostPart2 = InterestLostPart2 + YearlyContribution;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return InterestLostPart2;</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;}</p>
+								<p style="line-height:5px;margin-bottom:30px">&nbsp;&nbsp;}</p>
 							</div>
 					</div>
 				</div>
