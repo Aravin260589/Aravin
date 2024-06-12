@@ -335,9 +335,9 @@
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double Rate = (5.5/100);</p>
 								<br> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (CurrentAge >=55)</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("You have reached Withdrawal Age");</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
 								
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</p> 
 								
@@ -352,34 +352,34 @@
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char Withdraw = input.next().charAt(0);</p> 
 								<br>        
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Withdraw == 'N'|Withdraw == 'n')</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);</p>  
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Duration of Compound Years by Age 55: " +CompoundYears);</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Earned by Age of 55: " + Math.round((FullInterestEarned-Principal)*100.0)/100.0);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round((FullInterestEarned)*100.0)/100.0);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);</p>  
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p> 
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Duration of Compound Years by Age 55: " +CompoundYears);</p> 
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Compound Interest Earned by Age of 55: " + Math.round((FullInterestEarned-Principal)*100.0)/100.0);</p>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round((FullInterestEarned)*100.0)/100.0);</p>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
 								<br>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (Withdraw == 'Y'|Withdraw == 'y')</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("At what age would you like to withdraw?:");</p>  
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int WithdrawnAge = input.nextInt();</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter the amount to withdraw: ");</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double WithdrawnAmount = input.nextDouble();</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Duration = (55- WithdrawnAge + 1);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart1 = LostCalculation1(Rate,Duration,CompoundYears, Principal,YearlyContribution);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart2 = LostCalculation2(Rate,Duration,WithdrawnAmount, InterestLostPart1,YearlyContribution);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLost = (FullInterestEarned-InterestLostPart2-WithdrawnAmount);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Duration of Compound Years by Age 55: " + CompoundYears);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round(InterestLostPart2-Principal)*100.0/100.0);</p>
-								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Lost due to Withdrawal: " + Math.round(InterestLost*100.0)/100.0);</p>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p> 
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("At what age would you like to withdraw?:");</p>  
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int WithdrawnAge = input.nextInt();</p> 
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter the amount to withdraw: ");</p> 
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double WithdrawnAmount = input.nextDouble();</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Duration = (55- WithdrawnAge + 1);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart1 = LostCalculation1(Rate,Duration,CompoundYears, Principal,YearlyContribution);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart2 = LostCalculation2(Rate,Duration,WithdrawnAmount, InterestLostPart1,YearlyContribution);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLost = (FullInterestEarned-InterestLostPart2-WithdrawnAmount);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Rate (%): " + Rate*100);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Duration of Compound Years by Age 55: " + CompoundYears);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Final Savings Amount by Age of 55: " + Math.round(InterestLostPart2-Principal)*100.0/100.0);</p>
+								<p1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Interest Lost due to Withdrawal: " + Math.round(InterestLost*100.0)/100.0);</p>
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>   
+								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+								<p style="line-height:5px">&nbsp;&nbsp;}</p>
 								<br>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static double FullCal(double Rate,int CompoundYears,double Principal,double YearlyContribution)</p>
+								<p>&nbsp;&nbsp;public static double FullCal(double Rate,int CompoundYears,double Principal,double YearlyContribution)</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double FullInterestEarned = Principal;</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= CompoundYears; year++)</p>
@@ -390,7 +390,7 @@
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return FullInterestEarned;</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;}</p>
 								<br>
-								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;public static double LostCalculation1(double Rate,int Duration,int CompoundYears,double Principal,double YearlyContribution)</p>
+								<p>&nbsp;&nbsp;public static double LostCalculation1(double Rate,int Duration,int CompoundYears,double Principal,double YearlyContribution)</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;{</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double InterestLostPart1 = Principal;</p>
 								<p style="line-height:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int year = 1; year <= (CompoundYears - Duration); year++) </p>
