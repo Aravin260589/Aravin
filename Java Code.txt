@@ -1,102 +1,153 @@
 import java.util.Scanner;
-class InterestCalculatorV4 
-{
-    public static void main(String[] args) 
+
+  class InterestCalculatorV4
+
+  {
+
+   public static void main(String[] args)
+
     {
-        Scanner input = new Scanner(System.in);    
-        System.out.print("Enter current Age: ");
-        int CurrentAge = input.nextInt();
-        int CompoundYears = (55- CurrentAge + 1);
-        double Rate = (5.5/100);
+
+      Scanner input = new Scanner(System.in);
+
+      System.out.print("Enter current Age: ");
+
+      int CurrentAge = input.nextInt();
+
+      int CompoundYears = (55- CurrentAge + 1);
+
+      double Rate = (5.5/100);
 
 
-        if (CurrentAge >=55)
-        	{
-        	System.out.print("You have reached Withdrawal Age");
-        	}	
-        else
-        	{
-        	System.out.print("Please enter principal amount: ");
-        	double Principal = input.nextDouble();
-        	
-          	System.out.print("Please enter monthly contribution: ");
-        	double MonthlyContribution = input.nextDouble();
-        	double YearlyContribution = MonthlyContribution*12;
-        	
-        	System.out.print("Do You wish to withdraw amount before age 55?");
-        	char Withdraw = input.next().charAt(0);
-         
-        		if (Withdraw == 'N'|Withdraw == 'n')
-        			{
-        			double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);
-		        	System.out.println("Principal: " + Math.round(Principal*100.0)/100.0);
-		            System.out.println("Interest Rate (%): " + Rate*100);
-		            System.out.println("Duration of Compound Years by Age 55: " +CompoundYears);
-		            System.out.println("Compound Interest Earned by Age of 55: " + Math.round((FullInterestEarned-Principal)*100.0)/100.0);
-		            System.out.println("Final Savings Amount by Age of 55: " + Math.round((FullInterestEarned)*100.0)/100.0);
-        			}
-  
-        		else if (Withdraw == 'Y'|Withdraw == 'y')
-        			{
-		    		System.out.print("At what age would you like to withdraw?:");
-		    		int WithdrawnAge = input.nextInt();
-		    		
-		        	System.out.print("Enter the amount to withdraw: ");
-		        	double WithdrawnAmount = input.nextDouble();
-		    		int Duration = (55- WithdrawnAge + 1);
-		    		
-		        	double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);
-		    		double InterestLostPart1 = LostCalculation1(Rate,Duration,CompoundYears, Principal,YearlyContribution);
-		    		double InterestLostPart2 = LostCalculation2(Rate,Duration,WithdrawnAmount, InterestLostPart1,YearlyContribution);
-		    		
-		    		System.out.println("Principal: " + Math.round(Principal*100.0)/100.0);
-		            System.out.println("Interest Rate (%): " + Rate*100);
-		            System.out.println("Duration of Compound Years by Age 55: " + CompoundYears);
-		    		System.out.println("Final Value after withdraw: " + Math.round(InterestLostPart2*100.0)/100.0);
-		    		System.out.println("Interest Lost: " + Math.round((FullInterestEarned-InterestLostPart2-WithdrawnAmount)*100.0)/100.0);
-        			}
+      if (CurrentAge >=55)
 
-        	}
-       }
-    
-	public static double FullCal(double Rate, int CompoundYears,double Principal, double YearlyContribution )
-	{
+         {
+
+        System.out.print("You have reached Withdrawal Age");
+
+         }
+
+      else
+
+        {
+
+        System.out.print("Please enter principal amount: ");
+
+        double Principal = input.nextDouble();
+
+        System.out.print("Please enter monthly contribution: ");
+
+        double MonthlyContribution = input.nextDouble();
+
+        double YearlyContribution = MonthlyContribution*12;
+
+
+        System.out.print("Do You wish to withdraw amount before age 55?");
+
+        char Withdraw = input.next().charAt(0);
+
+
+            if (Withdraw == 'N'|Withdraw == 'n')
+
+                  {
+
+                  double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);
+
+                  System.out.println("Interest Rate (%): " + Rate*100);
+
+                  System.out.println("Duration of Compound Years by Age 55: " +CompoundYears);
+
+                  System.out.println("Compound Interest Earned by Age of 55: " + Math.round((FullInterestEarned-Principal)*100.0)/100.0);
+
+                  System.out.println("Final Savings Amount by Age of 55: " + Math.round((FullInterestEarned)*100.0)/100.0);
+
+                  }
+
+
+            else if (Withdraw == 'Y'|Withdraw == 'y')
+
+                  {
+
+                  System.out.print("At what age would you like to withdraw?:");
+                  int WithdrawnAge = input.nextInt();
+                  System.out.print("Enter the amount to withdraw: ");
+                  double WithdrawnAmount = input.nextDouble();
+                  int Duration = (55- WithdrawnAge + 1);
+                  double FullInterestEarned = FullCal(Rate,CompoundYears,Principal,YearlyContribution);
+                  double InterestLostPart1 = LostCalculation1(Rate,Duration,CompoundYears, Principal,YearlyContribution);
+                  double InterestLostPart2 = LostCalculation2(Rate,Duration,WithdrawnAmount, InterestLostPart1,YearlyContribution);
+                  double InterestLost = (FullInterestEarned-InterestLostPart2-WithdrawnAmount);
+                  System.out.println("Interest Rate (%): " + Rate*100);
+                  System.out.println("Duration of Compound Years by Age 55: " + CompoundYears);
+                  System.out.println("Final Savings Amount by Age of 55: " + Math.round(InterestLostPart2-Principal)*100.0/100.0);
+                  System.out.println("Interest Lost due to Withdrawal: " + Math.round(InterestLost*100.0)/100.0);
+                  }
+
+      }
+
+  }
+
+
+  public static double FullCal(double Rate,int CompoundYears,double Principal,double YearlyContribution)
+
+   {
+
         double FullInterestEarned = Principal;
-        for (int year = 1; year <= CompoundYears; year++) 
-        	{
-        	FullInterestEarned = FullInterestEarned + YearlyContribution;
-        	FullInterestEarned *= (1 + Rate); // Compound annually
-        	}
-       	return FullInterestEarned;
-    }
-	public static double LostCalculation1(double Rate, int Duration, int CompoundYears,double Principal, double YearlyContribution )
-	{
+
+        for (int year = 1; year <= CompoundYears; year++)
+
+            {
+
+            FullInterestEarned *= (1 + Rate);
+
+            FullInterestEarned = FullInterestEarned + YearlyContribution;
+
+            }
+
+       return FullInterestEarned;
+
+   }
+
+
+  public static double LostCalculation1(double Rate,int Duration,int CompoundYears,double Principal,double YearlyContribution)
+
+   {
+
         double InterestLostPart1 = Principal;
-        for (int year = 1; year <= (CompoundYears-Duration); year++) 
-        	{
-        	InterestLostPart1 = ((Math.round(InterestLostPart1)*100.0)/100.0) + YearlyContribution;
-        	InterestLostPart1 *= (1 + Rate); // Compound annually	
-        	}
-    	return InterestLostPart1;
-    }
-	
-	public static double LostCalculation2(double Rate, int Duration, double WithdrawnAmount,double InterestLostPart1, double YearlyContribution )
-	{
-        double InterestLostPart2 = (InterestLostPart1-WithdrawnAmount);
 
-        for (int year = 1; year <= (Duration); year++) 
-        	{
-        	InterestLostPart2 = ((Math.round(InterestLostPart2)*100.0)/100.0) + YearlyContribution;
-        	InterestLostPart2 *= (1 + Rate); // Compound annually
-        	}
-    	return InterestLostPart2;
-    }
-}
+        for (int year = 1; year <= (CompoundYears - Duration); year++)
+
+            {
+
+            InterestLostPart1 *= (1 + Rate);
+
+            InterestLostPart1 = InterestLostPart1 + YearlyContribution;
+
+            }
+
+       return InterestLostPart1;
+
+   }
 
 
+  public static double LostCalculation2(double Rate,int Duration,double WithdrawnAmount,double InterestLostPart1,double YearlyContribution)
 
+   {
 
+        double InterestLostPart2 = (InterestLostPart1 - WithdrawnAmount);
 
+        for (int year = 1; year <= (Duration); year++)
 
-    
+            {
 
+            InterestLostPart2 *= (1 + Rate);
+
+            InterestLostPart2 = InterestLostPart2 + YearlyContribution;
+
+            }
+
+       return InterestLostPart2;
+
+   }
+
+  }
